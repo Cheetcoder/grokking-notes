@@ -38,7 +38,19 @@ return result
 
 ## Pattern: Two Pointers
 
+The Two Pointers technique is a method to solve certain types of problems efficiently. The idea behind this technique is to maintain two pointers, often referred to as left and right, that traverse the input array/string. The pointers move in opposite directions, and the purpose is to either find a target or to identify a valid subarray/substring.
 
+Here is a template for the Two Pointers technique:
+
+1.  Initialize two pointers, left and right, pointing to the start of the array/string
+2.  While the left pointer is less than the right pointer:
+    -   Check the condition to find the target or validate the subarray/substring
+    -   If the condition is met, update the left or right pointer accordingly
+3.  Return the result
+
+To memorize this technique, you can use the mnemonic "LRL" (Left, Right, Left), which reminds you to first initialize the left and right pointers, then move the right pointer to the right and the left pointer to the left, and finally return the result.
+
+You can also use the pegging technique, where you visualize the pointers as two pegs, and imagine them moving towards each other while checking the condition. This helps you remember the direction of movement and the purpose of the technique.
 
 ## Pattern: Fast & Slow pointers
 * https://leetcode.com/problems/linked-list-cycle/

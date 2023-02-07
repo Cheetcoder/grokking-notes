@@ -148,115 +148,114 @@ def merge(intervals):
 
 ## Pattern: Cyclic Sort
 
-* Couldn't find equivalent for the first question. The second question below encompasses the first one though. See https://leetcode.com/problems/missing-number/discuss/859510/C%2B%2B-O(N)-O(1)-using-Cyclic-Sort for how grokking the coding interview approached these problems. It uses the fact that we can sort the array in O(n) without comparison operators
-* https://leetcode.com/problems/missing-number/
-* https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
-* https://leetcode.com/problems/find-all-duplicates-in-an-array/
-* combine https://leetcode.com/problems/find-the-duplicate-number/ and https://leetcode.com/problems/missing-number/
-* https://leetcode.com/problems/first-missing-positive/
-* https://leetcode.com/problems/kth-missing-positive-number/
+Cyclic Sort is a technique used to sort elements in a cyclic manner. It is used when the elements in an array are in the range of 1 to n and there are no duplicates. The basic idea is to traverse the array and swap the elements to their correct position. Here is a template for the Cyclic Sort technique:
+
+1.  Initialize a pointer "i" to traverse the array.
+2.  Repeat the following steps as long as "i" is less than n: a. If the element at index "i" is not at its correct position, swap it with the element at its correct position. b. Increment the "i" by 1.
+
+To memorize this technique, you can use the following mnemonic and pegging:
+
+Mnemonic: CYCLE
+
+-   C: Check the current element
+-   Y: If it's Not Yet in its correct position
+-   C: Cycle it to its correct position
+-   L: And Loop to next position
+
+Pegging: Picture a cycle spinning, with each element in its correct position. You can visualize yourself checking each element and if it's not in the right position, you move it to its correct position.
+
+```python
+function cyclicSort(arr):
+  n = length of arr
+  nums = arr
+  i = 0
+  
+  while i < n:
+    j = i
+    while nums[j] != j + 1:
+      swap(nums[j], nums[nums[j] - 1])
+    i = i + 1
+  
+  return nums
+
+function swap(a, b):
+  temp = a
+  a = b
+  b = temp
+```
+The basic idea behind this technique is to iterate through the array and place each element in its correct position by swapping it with the element that is supposed to be in that position. The j variable is used to keep track of the correct position for the current element, and the inner while loop continues until the current element is in the correct position. The outer while loop continues until all elements have been placed in their correct positions.
 
 ## Pattern: In-place Reversal of a LinkedList
-* https://leetcode.com/problems/reverse-linked-list/
-* https://leetcode.com/problems/reverse-linked-list-ii/
-* https://leetcode.com/problems/reverse-nodes-in-k-group/
-* Next question is the same, but alternate each subgroup
-* https://leetcode.com/problems/rotate-list/
+
+The template for In-place Reversal of a LinkedList technique is as follows:
+
+1.  Initialize two pointers, one pointing to the head of the linked list, and the other pointing to null.
+2.  Repeat the following steps until the first pointer reaches the end of the linked list: a. Save the next node of the first pointer in a variable. b. Update the next pointer of the first pointer to point to the second pointer. c. Move the second pointer to the first pointer. d. Move the first pointer to the saved next node.
+3.  Update the head of the linked list to be the second pointer.
+
+One mnemonic to help memorize this technique is "Head to Tail Flip". This refers to the process of flipping the direction of the pointers as they traverse the linked list from head to tail. The first pointer, moving through the linked list, represents the "head" while the second pointer represents the "tail". As they traverse the list, they "flip" the direction of the pointers, reversing the linked list.
+
+A helpful pegging method to remember this technique could be to visualize yourself flipping a rope or a chain end over end, with each bead representing a node in the linked list. This visualization will help you understand how the pointers traverse the linked list and how they "flip" the direction of the pointers to reverse the linked list.
 
 ## Pattern: Tree Breadth First Search
-* https://leetcode.com/problems/binary-tree-level-order-traversal/
-* https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
-* https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
-* https://leetcode.com/problems/minimum-depth-of-binary-tree/
-* https://leetcode.com/problems/inorder-successor-in-bst/  # Close, not exact
-* https://leetcode.com/problems/populating-next-right-pointers-in-each-node/  # Close, grokk assumes non-perfect tree
-* Next question is the same, but connect end nodes to the next level instead of null
-* https://leetcode.com/problems/binary-tree-right-side-view/
+
+The Tree Breadth First Search (BFS) technique is a way of traversing a tree in a level-by-level order, starting from the root node and visiting all the nodes on the current level before moving on to the next level.
+
+Template:
+
+1.  Initialize a queue to store the nodes to be visited
+2.  Enqueue the root node
+3.  While the queue is not empty: a. Dequeue a node from the queue and process it b. Enqueue the children of the processed node
+
+Mnemonic: BFS can be remembered using the phrase "Breadth First, from the Start". This helps to emphasize the level-by-level nature of the traversal, starting from the root node.
+
+Pegging: To further reinforce the concept, imagine a tree as a building with multiple floors. BFS would be like visiting each floor starting from the ground floor, visiting all the rooms on that floor before moving on to the next floor.
+
 
 ## Pattern: Tree Depth First Search
-* https://leetcode.com/problems/path-sum/
-* https://leetcode.com/problems/path-sum-ii/
-* https://leetcode.com/problems/sum-root-to-leaf-numbers/
-* https://leetcode.com/problems/check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree/description/
-* https://leetcode.com/problems/path-sum-iii/
-* https://leetcode.com/problems/diameter-of-binary-tree/
-* https://leetcode.com/problems/binary-tree-maximum-path-sum/
+
+The Tree Depth First Search (DFS) technique is a tree traversal method that explores as far as possible along each branch before backtracking. DFS can be implemented using three methods: in-order, pre-order, and post-order. Each of these methods visits nodes in a different order, but all start from the root node and traverse each of the children nodes recursively.
+
+To memorize DFS, you can use the mnemonic LDR for in-order DFS, DLR for pre-order DFS, and LRD for post-order DFS, where L represents visiting the left child, D represents visiting the current node, and R represents visiting the right child. To peg this mnemonic, you can visualize yourself moving through the tree and following the order of the letters.
+
+The template for Tree Depth First Search (DFS) technique can be as follows:
+
+```python
+def dfs(node):
+    if node is None:
+        return
+    # pre-order processing of the node
+    # ...
+    
+    # recursive calls for the children of the node
+    dfs(node.left)
+    dfs(node.right)
+    
+    # post-order processing of the node
+    # ...
+```
+
+To memorize this technique, one can use the following mnemonic: "DLR" (or "LDR"), which stands for "Depth-Left-Right" (or "Left-Depth-Right"). This mnemonic can be useful to remember the order in which the nodes of the tree are processed in the DFS approach. 
+
 
 ## Pattern: Two Heaps
-* https://leetcode.com/problems/find-median-from-data-stream/
-* https://leetcode.com/problems/sliding-window-median/
-* https://leetcode.com/problems/ipo/
-* https://leetcode.com/problems/find-right-interval/
+
 
 ## Pattern: Subsets
-* https://leetcode.com/problems/subsets/
-* https://leetcode.com/problems/subsets-ii/
-* https://leetcode.com/problems/permutations/
-* https://leetcode.com/problems/letter-case-permutation/
-* https://leetcode.com/problems/generate-parentheses/
-* https://leetcode.com/problems/generalized-abbreviation/
-* https://leetcode.com/problems/different-ways-to-add-parentheses/
-* https://leetcode.com/problems/unique-binary-search-trees-ii/
-* https://leetcode.com/problems/unique-binary-search-trees/
+
 
 ## Pattern: Modified Binary Search
-* https://leetcode.com/problems/binary-search/  # Close enough. The grokking problem allows sorted input arrays as ascending or descending, which only introduces a simple check
-* Did not find. Problem is find index of smallest element greater or equal to input value
-* https://leetcode.com/problems/find-smallest-letter-greater-than-target/
-* https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
-* https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
-* https://leetcode.com/problems/find-k-closest-elements/ (with K == 1)
-* https://leetcode.com/problems/peak-index-in-a-mountain-array/
-* https://leetcode.com/problems/find-in-mountain-array/
-* https://leetcode.com/problems/search-in-rotated-sorted-array/
-* Similar to previous, but find the number of rotations of the array.
+
 
 ## Pattern: Bitwise XOR
-* https://leetcode.com/problems/single-number/
-* https://leetcode.com/problems/single-number-iii/
-* https://leetcode.com/problems/complement-of-base-10-integer/
-* https://leetcode.com/problems/flipping-an-image/
+
 
 ## Pattern: Top 'K' elements
-* Same as second question, but the first Grokking question wants the top K instead of the bottom K
-* https://leetcode.com/problems/kth-largest-element-in-an-array
-* https://leetcode.com/problems/k-closest-points-to-origin/
-* https://leetcode.com/problems/minimum-cost-to-connect-sticks/
-* https://leetcode.com/problems/top-k-frequent-elements/
-* https://leetcode.com/problems/sort-characters-by-frequency/
-* https://leetcode.com/problems/kth-largest-element-in-a-stream/
-* https://leetcode.com/problems/find-k-closest-elements/
-* https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/ closest leetcode or https://www.geeksforgeeks.org/maximum-distinct-elements-removing-k-elements/ for exact
-* https://www.geeksforgeeks.org/sum-elements-k1th-k2th-smallest-elements/ no leetcode equivalent found
-* https://leetcode.com/problems/reorganize-string/
-* https://leetcode.com/problems/rearrange-string-k-distance-apart/
-* https://leetcode.com/problems/task-scheduler/
-* https://leetcode.com/problems/maximum-frequency-stack/
+
 
 ## Pattern: K-way merge
-* https://leetcode.com/problems/merge-k-sorted-lists/
-* Same as previous, but return the Kth smallest number
-* https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
-* https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/
-* https://leetcode.com/problems/find-k-pairs-with-smallest-sums/ small difference, grokking has different sort order and wants the largest
 
 ## Pattern: 0/1 Knapsack
-* https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/RM1BDv71V60
-* https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/3jEPRo5PDvx or https://leetcode.com/problems/partition-equal-subset-sum/
-* https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/3j64vRY6JnR
-* https://leetcode.com/problems/last-stone-weight-ii/ similar concept, but problem description is more abstract.
-* https://leetcode.com/problems/combination-sum-ii/ similar, but return the number of combinations instead of the combinations
-* https://leetcode.com/problems/target-sum/
-* BONUS : Not in grokking, but I still found this very useful https://leetcode.com/problems/ones-and-zeroes/
 
 ## Pattern: Topological Sort
-* First problem is identical to the following three
-* https://leetcode.com/problems/course-schedule/
-* https://leetcode.com/problems/course-schedule-ii/ 
-* Same as above, but return all instead of any
-* https://leetcode.com/problems/alien-dictionary/
-* https://leetcode.com/problems/sequence-reconstruction/description/
-* https://leetcode.com/problems/minimum-height-trees/
 
-## Misc
-* https://leetcode.com/problems/kth-largest-element-in-an-array/

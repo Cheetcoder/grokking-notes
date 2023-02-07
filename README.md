@@ -81,13 +81,34 @@ To memorize this technique, you can use mnemonics and pegging. Mnemonics can hel
 
 
 ## Pattern: Fast & Slow pointers
-* https://leetcode.com/problems/linked-list-cycle/
-* https://leetcode.com/problems/linked-list-cycle-ii/
-* https://leetcode.com/problems/happy-number/
-* https://leetcode.com/problems/middle-of-the-linked-list/
-* https://leetcode.com/problems/palindrome-linked-list/
-* https://leetcode.com/problems/reorder-list/
-* https://leetcode.com/problems/circular-array-loop/
+The Fast & Slow Pointers technique is a pattern that uses two pointers to traverse through a list or an array. The fast pointer moves at a faster pace than the slow pointer, and the distance between them is used to determine the solution to a particular problem.
+
+Here's a general template for using this technique:
+
+1. Initialize two pointers, one fast and one slow, pointing to the beginning of the list.
+2. Use a while loop to traverse the list, with the fast pointer moving at a faster pace than the slow pointer.
+3. Use the distance between the fast and slow pointers to determine the solution to the problem.
+4. Depending on the problem, you may also update the slow pointer as you traverse the list.
+5. Continue the loop until the fast pointer has reached the end of the list.
+6. Return the result based on the position of the slow pointer.
+
+To memorize this technique using mnemonics and pegging, you can use the following:
+
+Mnemonic: "FS - Follow the Speedy guy"
+Pegging: Picture a slow hiker and a fast runner. The fast runner is ahead of the slow hiker and the hiker can determine how far ahead the runner is by counting their steps.
+
+Pseudocode:
+
+```python
+Initialize two pointers, slow = 0, fast = 0
+While fast < len(list):
+  // update the fast pointer
+  fast = fast + 1
+  // update the slow pointer based on the problem requirements
+  slow = updateSlow(slow)
+Return result based on the position of the slow pointer
+
+
 
 ## Pattern: Merge Intervals
 * https://leetcode.com/problems/merge-intervals/

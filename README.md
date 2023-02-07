@@ -112,6 +112,39 @@ Return result based on the position of the slow pointer
 
 ## Pattern: Merge Intervals
 
+Merge Intervals technique is a useful technique when you have a set of intervals and you need to merge any overlapping intervals. Here's a template for the technique:
+
+1.  Sort the intervals based on the start time
+2.  Initialize a variable `result` with the first interval in the sorted list.
+3.  Loop through the rest of the intervals and compare each interval with the last interval in `result`.
+4.  If the current interval overlaps with the last interval in `result`, update the end time of the last interval in `result` to the maximum of the two end times.
+5.  If the current interval does not overlap with the last interval in `result`, add it to `result`.
+6.  Repeat steps 3-5 until all intervals have been processed.
+
+Pseudocode:
+
+```python
+def merge(intervals):
+  # sort intervals based on start time
+  intervals.sort(key=lambda x: x[0])
+  
+  result = [intervals[0]]
+  
+  for i in range(1, len(intervals)):
+    current_interval = intervals[i]
+    last_interval = result[-1]
+    
+    # If the current interval overlaps with the last interval
+    if current_interval[0] <= last_interval[1]:
+      # update the end time of the last interval in result
+      last_interval[1] = max(last_interval[1], current_interval[1])
+    else:
+      # If the current interval does not overlap with the last interval
+      result.append(current_interval)
+  
+  return result
+
+```
 
 ## Pattern: Cyclic Sort
 

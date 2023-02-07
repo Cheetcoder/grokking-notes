@@ -52,6 +52,34 @@ To memorize this technique, you can use the mnemonic "LRL" (Left, Right, Left), 
 
 You can also use the pegging technique, where you visualize the pointers as two pegs, and imagine them moving towards each other while checking the condition. This helps you remember the direction of movement and the purpose of the technique.
 
+Here's a basic template for the Two Pointers technique in pseudocode:
+
+```python
+# two pointers, `left` and `right`, initially pointing to the start of the array
+left = 0
+right = 0
+
+while right < len(array):
+  # if the current subarray satisfies the condition, move `left` pointer towards the right
+  while condition:
+    # update some variables, e.g. sum or count
+    update()
+    left += 1
+
+  # if the current subarray doesn't satisfy the condition, move `right` pointer towards the right
+  # also update some variables, e.g. sum or count
+  update()
+  right += 1
+
+# at this point, the optimal subarray that satisfies the condition is between `left` and `right-1`
+return result
+
+```
+This is just a general outline of the Two Pointers technique, and you may need to modify the pseudocode based on the specific problem you're trying to solve. The main idea of Two Pointers is to use two pointers that move towards each other to maintain a valid subarray that satisfies some condition, and update the subarray whenever necessary.
+
+To memorize this technique, you can use mnemonics and pegging. Mnemonics can help you remember key concepts and steps, while pegging can help you associate these concepts with specific objects or actions. For example, you can imagine the two pointers as two people holding a rope, and moving towards each other until they meet at the middle of the rope. The rope represents the subarray, and the meeting point represents the optimal solution. By using mnemonics and pegging, you can better retain the information and recall it more easily when you need it.
+
+
 ## Pattern: Fast & Slow pointers
 * https://leetcode.com/problems/linked-list-cycle/
 * https://leetcode.com/problems/linked-list-cycle-ii/

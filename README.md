@@ -17,7 +17,7 @@ To practice this technique, it is important to work through several examples and
 
 Here is a basic pseudocode template for sliding window algorithm:
 
-```
+```python
 start = 0
 end = 0
 while end < length_of_array:

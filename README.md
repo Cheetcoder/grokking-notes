@@ -4,17 +4,37 @@ List of leetcode problems that are as close to grokking problems as possible.
 
 ## Pattern: Sliding Window
 
-* https://leetcode.com/problems/maximum-subarray/ # Close enough
-* https://leetcode.com/problems/minimum-size-subarray-sum/
-* https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
-* https://leetcode.com/problems/fruit-into-baskets/
-* https://leetcode.com/problems/longest-substring-without-repeating-characters/
-* https://leetcode.com/problems/longest-repeating-character-replacement/
-* https://leetcode.com/problems/max-consecutive-ones-iii/
-* https://leetcode.com/problems/permutation-in-string/
-* https://leetcode.com/problems/find-all-anagrams-in-a-string/
-* https://leetcode.com/problems/minimum-window-substring/
-* https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+The sliding window technique is a pattern for solving problems involving arrays or strings by keeping track of a window of elements that satisfies some condition, and moving the window through the array/string until all elements have been processed.
+
+A common mnemonic for remembering the steps involved in using the sliding window technique is "SET", which stands for:
+
+1.  S - Set up two pointers, left and right, that define the window.
+2.  E - Expand the window (move the right pointer) until the condition is satisfied.
+3.  T - Trim the window (move the left pointer) until the condition is no longer satisfied.
+
+To help peg this information, imagine you are playing a game where you must find a treasure hidden inside a building. The building is represented by the array or string, and the two pointers represent the two doors of the room you are currently in. The goal is to find the room with the treasure by expanding and trimming the room until you find it.
+
+To practice this technique, it is important to work through several examples and understand how the pointers move and the condition changes as you move through the array/string.
+
+Here is a basic pseudocode template for sliding window algorithm:
+
+```
+start = 0
+end = 0
+while end < length_of_array:
+    # expand the window if conditions are met
+    while conditions_are_met(end):
+        update_window_information(end)
+        end += 1
+    
+    # shrink the window if conditions are not met
+    while not conditions_are_met(end):
+        update_window_information(start)
+        start += 1
+
+return result
+```
+
 
 ## Pattern: Two Pointers
 

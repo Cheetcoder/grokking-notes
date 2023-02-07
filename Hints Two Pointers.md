@@ -1,5 +1,5 @@
 
-## Two Pointers
+# Two Pointers Problems Summary and Hint 
 
 * https://leetcode.com/problems/two-sum/
 * https://leetcode.com/problems/remove-duplicates-from-sorted-array/

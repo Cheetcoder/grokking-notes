@@ -258,19 +258,216 @@ Pseudocode:
 
 ## Pattern: Subsets
 
+The Subsets technique is a method used to find all the possible subsets of a set. To implement this, we can use either Backtracking or Bit Manipulation.
+
+Mnemonic: "SEB" (Select, Explore, Backtrack)
+Pegging: To help remember this technique, think of a set of items as a treasure chest, and each subset as a bag you can put items in. When exploring a set, you have two options - select an item to put in the bag or skip the item. When you have explored all the items, you backtrack to the previous item and make a different decision.
+
+Pseudocode for backtracking:
+
+```python
+result = []
+def subsets_helper(start, subset, nums):
+  result.append(subset)
+  for i in range(start, len(nums)):
+    subsets_helper(i + 1, subset + [nums[i]], nums)
+
+def subsets(nums):
+  subsets_helper(0, [], nums)
+  return result
+
+```
 
 ## Pattern: Modified Binary Search
 
+The Modified Binary Search technique is used to search for a target element in a sorted array, where the array may have a condition that makes it difficult to determine if a given middle element is the correct answer. To use this technique, you need to modify the standard binary search algorithm in a way that takes into account the additional condition.
+
+And here's a simple pegging exercise to help you recall the technique:
+
+-   Picture a set of shelves in your mind, where each shelf has a number of books on it.
+-   Imagine you're looking for a specific book, but the shelves are arranged in a way that makes it difficult to determine which shelf the book is on.
+-   In this situation, you would use the Modified Binary Search technique to find the book by making educated guesses and checking each shelf until you find the right one.
+-   Repeat the process a few times in your mind to reinforce your memory of the technique.
+
+```python
+function binarySearch(arr, target):
+    left = 0
+    right = len(arr) - 1
+
+    while left <= right:
+        mid = left + (right - left) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return -1
+
+```
+
+To memorize this, you can use the mnemonic "Less to More" to remember that when the target value is greater than the current value at the middle index, you need to search in the right half of the array (the values are increasing). If the target value is less than the current value, you need to search in the left half of the array.
 
 ## Pattern: Bitwise XOR
+The Bitwise XOR technique is a mathematical operation that can be used to solve various computer science problems, such as finding the missing number in an array or finding the single non-duplicated number in an array.
 
+To memorize the Bitwise XOR technique, you can use the following mnemonic and pegging:
+
+Mnemonic: XOR (Exclusive OR) Pegging: Think of the XOR operation as a way to "cancel out" pairs of matching numbers.
+
+Pseudocode:
+
+```python
+result = 0
+for each number in the array:
+    result = result XOR number
+return result
+```
+
+In this pseudocode, the result is initially set to 0, and for each number in the array, it performs the XOR operation with the result. The XOR operation will cancel out pairs of matching numbers and return the single non-duplicated number in the end.
 
 ## Pattern: Top 'K' elements
+The Top 'K' elements technique is a method used to find the k largest or k smallest elements in a given data set. There are several algorithms to achieve this, including Heap, QuickSelect, and Counting Sort.
+
+To memorize this technique using mnemonics and pegging, you can use the following mnemonic: "KTOP" (K Thorough Ordering Process)
+
+Pseudocode for finding k largest elements using a Min Heap:
+
+1.  Create a Min Heap with a capacity of k elements
+2.  Traverse the entire data set and for each element:
+    -   If the heap size is less than k, insert the element into the heap.
+    -   If the heap size is equal to k, compare the element with the minimum element in the heap. If the element is larger, remove the minimum element and insert the current element.
+3.  The k largest elements are now stored in the heap.
+
+Pseudocode for finding k smallest elements using a Max Heap:
+
+1.  Create a Max Heap with a capacity of k elements
+2.  Traverse the entire data set and for each element:
+    -   If the heap size is less than k, insert the element into the heap.
+    -   If the heap size is equal to k, compare the element with the maximum element in the heap. If the element is smaller, remove the maximum element and insert the current element.
+3.  The k smallest elements are now stored in the heap.
+
+
+The "Top 'K' Elements" technique is used to find the k largest or smallest elements in a given collection (such as an array or list). One common way to solve these types of problems is to use a Min Heap of size k to keep track of the k largest elements.
+
+Here is a sample python code that demonstrates this approach:
+
+```python
+import heapq
+
+def top_k_elements(nums, k):
+    min_heap = []
+    for num in nums:
+        if len(min_heap) < k:
+            heapq.heappush(min_heap, num)
+        else:
+            if num > min_heap[0]:
+                heapq.heapreplace(min_heap, num)
+    return min_heap
+
+# Example usage
+nums = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+k = 4
+print(top_k_elements(nums, k))
+# Output: [5, 5, 5, 9]
+```
+In this code, we use the heapq library in python to create a Min Heap and manipulate it. The function heappush is used to insert elements into the heap, and the function heapreplace is used to replace the smallest element in the heap with a new element if it is larger. In this way, the heap will always contain the k largest elements in the input nums array.
 
 
 ## Pattern: K-way merge
 
-## Pattern: 0/1 Knapsack
+The K-way merge technique is a way to merge multiple sorted arrays or lists into a single sorted array. The approach is to keep a pointer for each of the arrays, and iteratively pick the smallest element among the elements pointed by all the pointers, add it to the result array and move the pointer of the corresponding array forward.
+
+To memorize this technique, you can use the mnemonic "PKM" (Pick, Keep, Move), to remember the three main steps of the algorithm:
+
+1.  Pick the smallest element among the elements pointed by all the pointers.
+2.  Keep the result array sorted.
+3.  Move the pointer of the corresponding array forward.
+
+You can also use the pegging technique, where you associate each step of the algorithm with a physical action. For example, you can associate "pick" with pointing your index finger, "keep" with holding your hand in front of you, and "move" with moving your hand forward. By performing these physical actions, you can help fix the steps of the algorithm in your memory.
+
+Here is a sample Python code to help you memorize the K-way merge technique:
+
+```python
+from heapq import heappush, heappop
+
+def merge_k_sorted_arrays(arrays):
+    result = []
+    min_heap = []
+    for i, array in enumerate(arrays):
+        heappush(min_heap, (array[0], i, 0))
+        
+    while min_heap:
+        value, array_index, element_index = heappop(min_heap)
+        result.append(value)
+        
+        if element_index + 1 < len(arrays[array_index]):
+            heappush(min_heap, (arrays[array_index][element_index + 1], array_index, element_index + 1))
+            
+    return result
+
+```
+
+You can use the mnemonic "K-MART" to remember the steps involved in K-way merge:
+
+-   **K** stands for "K arrays"
+-   **M** stands for "Merge"
+-   **A** stands for "Array"
+-   **R** stands for "Result"
+-   **T** stands for "Top (element from the min heap)"
+
+So, the mnemonic helps you remember that you need to merge K arrays to get the result by keeping the top element from the min heap.
 
 ## Pattern: Topological Sort
 
+Topological sort is a linear ordering of the vertices of a directed acyclic graph (DAG) such that for every directed edge (u, v), vertex u comes before vertex v in the ordering. This technique is used in scheduling problems and to find dependencies between tasks.
+
+A mnemonic to help remember the Topological Sort technique is: "Task Ordering" - thinking about tasks that need to be done in a specific order, like a to-do list.
+
+Pegging technique can be used to associate the concept with a real-world scenario, such as the tasks involved in planning a trip, where each task depends on the completion of another task. For example, you can't book a flight until you have decided on a destination, and you can't rent a car until you have booked a flight.
+
+Here is sample python code for Topological Sort:
+
+```python
+from collections import defaultdict
+
+class Graph:
+  def __init__(self, vertices):
+    self.graph = defaultdict(list)
+    self.V = vertices
+
+  def addEdge(self, u, v):
+    self.graph[u].append(v)
+
+  def topologicalSortUtil(self, v, visited, stack):
+    visited[v] = True
+    if v in self.graph.keys():
+      for node in self.graph[v]:
+        if visited[node] == False:
+          self.topologicalSortUtil(node, visited, stack)
+    stack.append(v)
+
+  def topologicalSort(self):
+    visited = [False] * self.V
+    stack =[]
+    for i in range(self.V):
+      if visited[i] == False:
+        self.topologicalSortUtil(i, visited, stack)
+    print(stack[::-1])
+
+g= Graph(6)
+g.addEdge(5, 2);
+g.addEdge(5, 0);
+g.addEdge(4, 0);
+g.addEdge(4, 1);
+g.addEdge(2, 3);
+g.addEdge(3, 1);
+
+print("Topological sort of the given graph is: ")
+g.topologicalSort()
+
+```
+
+You can use mnemonics to remember the steps of Topological Sort. For example: "TV Show", where T stands for "Topological sort", V stands for "Visit nodes", and S stands for "Store the result in a stack". The order of these steps can be remembered using the mnemonic: "TV Show".

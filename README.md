@@ -1,6 +1,5 @@
 # GROKKING-NOTES
 
-List of leetcode problems that are as close to grokking problems as possible. Thanks to https://gist.github.com/ysalau/c8cf5b5491ffcaf380b5241bf6876589
 
 ## Pattern: Sliding Window
 

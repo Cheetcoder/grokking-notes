@@ -239,7 +239,22 @@ To memorize this technique, one can use the following mnemonic: "DLR" (or "LDR")
 
 
 ## Pattern: Two Heaps
+The Two Heaps technique is a method for solving problems where we need to maintain a dynamic window of elements in a sorted or partially sorted order. This technique uses two heaps to maintain the elements: a max-heap and a min-heap. The max-heap stores the elements that are greater than or equal to the median, while the min-heap stores the elements that are less than the median. By maintaining these two heaps, we can efficiently find the median, add or remove elements, and keep the windows in a partially sorted order.
 
+Mnemonic: "Max-Heap Min-Heap Median" (MMM)
+
+Pegging: Imagine two buckets, one filled with elements greater than or equal to the median (max-heap) and one filled with elements less than the median (min-heap). The median is like the dividing line between the two buckets.
+
+Pseudocode:
+
+```python
+1. Create two heaps: maxHeap and minHeap
+2. Maintain the size of maxHeap to be greater than or equal to minHeap
+3. Whenever a new element is added, add it to maxHeap and then balance the size of the two heaps if necessary
+4. To find the median, check the size of the two heaps. If maxHeap has more elements, return its maximum element, otherwise return the minimum element of minHeap
+5. To remove an element, remove it from the heap that contains it
+6. Rebalance the size of the two heaps if necessary
+```
 
 ## Pattern: Subsets
 

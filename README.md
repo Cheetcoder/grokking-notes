@@ -107,7 +107,7 @@ While fast < len(list):
   // update the slow pointer based on the problem requirements
   slow = updateSlow(slow)
 Return result based on the position of the slow pointer
-
+```
 
 
 ## Pattern: Merge Intervals
